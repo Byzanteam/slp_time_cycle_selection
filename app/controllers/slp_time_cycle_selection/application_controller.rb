@@ -12,5 +12,13 @@ module SlpTimeCycleSelection
 
       paginated_objects
     end
+
+    def render_json_error(obj = nil)
+      if obj.present?
+        render json: obj.errors, status: :unprocessable_entity
+      else
+        render json: MultiJson.dump(errors: ['参数错误']), status: :unprocessable_entity
+      end
+    end
   end
 end

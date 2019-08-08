@@ -14,6 +14,16 @@ module SlpTimeCycleSelection
       end
     end
 
+    def create
+      @project = SlpTimeCycleSelection::Project.new(project_params)
+
+      if @project.save
+        render layout: false, status: :created
+      else
+        render_json_error @project
+      end
+    end
+
     def show
       respond_to do |format|
         format.html
@@ -28,6 +38,10 @@ module SlpTimeCycleSelection
     end
 
     private
+
+    def project_params
+      params.require(:project).permit(:id, :name, :delay_minutes, :delay_minute_unit)
+    end
 
     def set_project
       @project = SlpTimeCycleSelection::Project.find(params[:id])
