@@ -21,6 +21,12 @@ module SlpTimeCycleSelection
       end
     end
 
+    def destroy
+      @project.destroy
+
+      head :no_content
+    end
+
     private
 
     def set_project
