@@ -60,6 +60,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    bootsnap (1.4.4)
+      msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
     coderay (1.1.2)
@@ -72,6 +74,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     ejs (1.1.1)
     erubi (1.7.1)
     execjs (2.7.0)
@@ -80,6 +84,8 @@ GEM
       railties (>= 3.2, < 6.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.1)
@@ -108,10 +114,16 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2019.0331)
     mimemagic (0.3.2)
+    mini_magick (4.9.5)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    msgpack (1.3.1)
+    netrc (0.11.0)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
@@ -122,6 +134,8 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    puma (4.0.1)
+      nio4r (~> 2.0)
     rack (2.0.5)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -153,6 +167,10 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -184,6 +202,11 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    uglifier (4.1.20)
+      execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -192,18 +215,23 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsnap (>= 1.1.0)
   coffee-rails (~> 4.0)
   font-awesome-rails
   jbuilder
   jquery-rails
   kaminari
+  mini_magick (~> 4.8)
   pg
   pry
   pry-byebug
+  puma
   rails-backbone!
+  rest-client
   sass-rails (~> 5.0)
   slim-rails (~> 3.0)
   slp_time_cycle_selection!
+  uglifier (>= 1.3.0)
 
 BUNDLED WITH
    1.17.1
