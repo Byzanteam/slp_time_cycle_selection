@@ -6,6 +6,8 @@ group :development, :test do
   gem 'pry-byebug'
 end
 
+gem 'kaminari'
+
 # http://stackoverflow.com/a/25148960/3639260
 gem 'coffee-rails', '~> 4.0'
 gem 'sass-rails', '~> 5.0'
