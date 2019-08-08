@@ -4,9 +4,9 @@ module SlpTimeCycleSelection
     validates :delay_minute_unit, presence: true
 
     enum delay_minute_unit: {
-      'minute' => 1,
-      'hour' => 2,
-      'day' => 3
+      'minute' => 0,
+      'hour' => 1,
+      'day' => 2
     }
   end
 end
