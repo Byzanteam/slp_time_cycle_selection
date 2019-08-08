@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_014358) do
   create_table "slp_time_cycle_selection_projects", force: :cascade do |t|
     t.string "name"
     t.integer "delay_minutes"
-    t.integer "delay_minuste_unit"
+    t.integer "delay_minute_unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
