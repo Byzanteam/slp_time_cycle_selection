@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_014358) do
+ActiveRecord::Schema.define(version: 2019_08_08_064944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "slp_time_cycle_selection_periodic_modules", force: :cascade do |t|
+    t.string "name"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_slp_time_cycle_selection_periodic_modules_on_project_id"
+  end
 
   create_table "slp_time_cycle_selection_projects", force: :cascade do |t|
     t.string "name"

@@ -2,7 +2,7 @@ require_dependency "slp_time_cycle_selection/application_controller"
 
 module SlpTimeCycleSelection
   class ProjectsController < ApplicationController
-    before_action :set_project, only: [:show]
+    before_action :set_project, only: [:show, :destroy, :update]
 
     def index
       respond_to do |format|
@@ -20,7 +20,7 @@ module SlpTimeCycleSelection
       if @project.save
         render layout: false, status: :created
       else
-        render_json_error @project
+        render_json_error(@project)
       end
     end
 
@@ -28,6 +28,14 @@ module SlpTimeCycleSelection
       respond_to do |format|
         format.html
         format.json
+      end
+    end
+
+    def update
+      if @project.update(update_project_params)
+        render partial: 'slp_time_cycle_selection/projects/project', locals: { project: @project }, layout: false
+      else
+        render_json_error(@project)
       end
     end
 
@@ -40,7 +48,17 @@ module SlpTimeCycleSelection
     private
 
     def project_params
-      params.require(:project).permit(:id, :name, :delay_minutes, :delay_minute_unit)
+      params.require(:project).permit(:name, :delay_minutes, :delay_minute_unit)
+    end
+
+    def update_project_params
+      params.require(:project).permit(
+        :id,
+        :name,
+        :delay_minutes,
+        :delay_minute_unit,
+        periodic_modules_attributes: [:id, :name, :_destroy]
+      )
     end
 
     def set_project
