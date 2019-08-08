@@ -1,1 +1,1 @@
-json.(project, :id, :name, :delay_minutes, :delay_minuste_unit)
+json.(project, :id, :name, :delay_minutes, :delay_minute_unit)
