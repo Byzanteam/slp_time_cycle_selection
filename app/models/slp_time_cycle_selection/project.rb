@@ -2,7 +2,9 @@ module SlpTimeCycleSelection
   class Project < ApplicationRecord
     before_create :set_default_periodic_module
 
-    has_many :periodic_modules, :class_name => 'SlpTimeCycleSelection::PeriodicModule'
+    has_many :periodic_modules, :class_name => 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
+
+    accepts_nested_attributes_for :periodic_modules, allow_destroy: true
 
     enum delay_minute_unit: {
       'minute' => 0,

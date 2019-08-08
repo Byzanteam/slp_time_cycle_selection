@@ -20,7 +20,7 @@ module SlpTimeCycleSelection
       if @project.save
         render layout: false, status: :created
       else
-        render_json_error @project
+        render_json_error(@project)
       end
     end
 
@@ -32,10 +32,10 @@ module SlpTimeCycleSelection
     end
 
     def update
-      if @project.update project_params
+      if @project.update(update_project_params)
         render partial: 'slp_time_cycle_selection/projects/project', locals: { project: @project }, layout: false
       else
-        render_json_error @project
+        render_json_error(@project)
       end
     end
 
@@ -48,7 +48,17 @@ module SlpTimeCycleSelection
     private
 
     def project_params
-      params.require(:project).permit(:id, :name, :delay_minutes, :delay_minute_unit)
+      params.require(:project).permit(:name, :delay_minutes, :delay_minute_unit)
+    end
+
+    def update_project_params
+      params.require(:project).permit(
+        :id,
+        :name,
+        :delay_minutes,
+        :delay_minute_unit,
+        periodic_modules_attributes: [:id, :name, :_destroy]
+      )
     end
 
     def set_project

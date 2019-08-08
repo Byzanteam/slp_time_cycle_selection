@@ -2,6 +2,8 @@ module SlpTimeCycleSelection
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
+    skip_before_action :verify_authenticity_token
+
     def paginate(objects)
       return unless objects
       paginated_objects = objects.page(params[:page]).per(params[:per_page])
