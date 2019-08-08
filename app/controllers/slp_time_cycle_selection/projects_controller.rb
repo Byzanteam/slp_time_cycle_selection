@@ -32,7 +32,7 @@ module SlpTimeCycleSelection
     end
 
     def update
-      if @project.update(update_project_params)
+      if @project.update(project_params)
         render partial: 'slp_time_cycle_selection/projects/project', locals: { project: @project }, layout: false
       else
         render_json_error(@project)
@@ -48,10 +48,6 @@ module SlpTimeCycleSelection
     private
 
     def project_params
-      params.require(:project).permit(:name, :delay_minutes, :delay_minute_unit)
-    end
-
-    def update_project_params
       params.require(:project).permit(
         :id,
         :name,
