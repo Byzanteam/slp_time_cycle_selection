@@ -1,0 +1,63 @@
+.project-page {
+  .head {
+    height: 2.5rem;
+    border-bottom: 1px solid #bbb;
+    
+    .head-left {
+      width: 10rem;
+      height: 2.5rem;
+      border-right: 1px solid #bbb;
+      text-align: center;
+      line-height: 2.5rem;
+    }
+  }
+  
+  .middle {
+    width: 68rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    
+    .middle-left {
+      line-height: 1.9rem;
+    }
+  }
+  
+  .content {
+    width: 68rem;
+    height: 44.5rem;
+    line-height: 1rem;
+    border: 1px solid rgba(187, 187, 187, 1);
+    margin: 0 auto;
+    border-radius: .3rem;
+    
+    .project-table {
+      display: none;
+      
+      th {
+        color: #606266;
+      }
+      
+      td {
+        color: #606266;
+      }
+    }
+    
+    .new-project {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate( -50%, -50%);
+      display: flex;
+      flex-direction: column;
+      
+      i {
+        font-size: 6rem;
+      }
+      
+      .no-project {
+        margin-top: .25rem;
+      }
+    }
+  }
+}
