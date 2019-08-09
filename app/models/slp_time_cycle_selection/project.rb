@@ -1,6 +1,6 @@
 module SlpTimeCycleSelection
   class Project < ApplicationRecord
-    before_create :set_default_periodic_module
+    after_create :set_default_periodic_module
 
     has_many :periodic_modules, :class_name => 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
 
@@ -15,7 +15,7 @@ module SlpTimeCycleSelection
     private
 
     def set_default_periodic_module
-      periodic_modules.create(name: '默认')
+      periodic_modules.create(name: '默认') if periodic_modules.empty?
     end
   end
 end

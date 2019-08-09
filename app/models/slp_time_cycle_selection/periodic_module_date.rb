@@ -1,5 +1,5 @@
 module SlpTimeCycleSelection
-  class PeriodicModuleDay < ApplicationRecord
+  class PeriodicModuleDate < ApplicationRecord
     validates :name, presence: true
 
     belongs_to :periodic_module, :class_name => 'SlpTimeCycleSelection::PeriodicModule'

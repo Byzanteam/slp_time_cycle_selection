@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module SlpTimeCycleSelection
-  class PeriodicModuleDayTest < ActiveSupport::TestCase
+  class PeriodicModuleDateTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true
     # end
