@@ -17,12 +17,10 @@ ActiveRecord::Schema.define(version: 2019_08_08_091912) do
 
   create_table "slp_time_cycle_selection_periodic_module_dates", force: :cascade do |t|
     t.integer "name"
+    t.string "type"
     t.bigint "periodic_module_id"
-    t.string "dateable_type"
-    t.bigint "dateable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dateable_type", "dateable_id"], name: "periodic_module_dates_on_dateable_type_and_dateable_id"
     t.index ["periodic_module_id"], name: "periodic_module_dates_on_periodic_module_id"
   end
 
