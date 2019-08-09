@@ -53,7 +53,12 @@ module SlpTimeCycleSelection
         :name,
         :delay_minutes,
         :delay_minute_unit,
-        periodic_modules_attributes: [:id, :name, :_destroy]
+        periodic_modules_attributes: [
+          :id,
+          :name,
+          :_destroy,
+          module_dates: [:id]
+        ]
       )
     end
 
