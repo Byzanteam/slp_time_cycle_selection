@@ -5,6 +5,8 @@ module SlpTimeCycleSelection
 
     after_create :set_default_periodic_module_dates
 
+    accepts_nested_attributes_for :module_dates, allow_destroy: false, update_only: false
+
     private
 
     def set_default_periodic_module_dates
