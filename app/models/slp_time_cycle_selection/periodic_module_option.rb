@@ -11,8 +11,8 @@ module SlpTimeCycleSelection
       return unless start_at
 
       option.clear
-      option << start_at.strftime('%H:%S') if start_at
-      option << end_at.strftime('%H:%S') if end_at
+      option << start_at.strftime('%H:%S')
+      option << end_at.strftime('%H:%S') if start_at.present? && end_at.present?
     end
   end
 end
