@@ -5,6 +5,10 @@ module SlpTimeCycleSelection
     belongs_to :periodic_module, :class_name => 'SlpTimeCycleSelection::PeriodicModule'
     has_many :options, :class_name => 'SlpTimeCycleSelection::PeriodicModuleOption', dependent: :destroy
 
+    after_create :set_default_options
+
+    accepts_nested_attributes_for :options, allow_destroy: true
+
     enum name: {
       'Monday' => 0,
       'Tuesday' => 1,
@@ -24,5 +28,11 @@ module SlpTimeCycleSelection
     scope :friday, -> { find_by(type: 'SlpTimeCycleSelection::PeriodicModuleDate::Friday') }
     scope :saturday, -> { find_by(type: 'SlpTimeCycleSelection::PeriodicModuleDate::Saturday') }
     scope :sunday, -> { find_by(type: 'SlpTimeCycleSelection::PeriodicModuleDate::Sunday') }
+
+    private
+
+    def set_default_options
+      options.create(option: %w[00:00 23:59])
+    end
   end
 end
