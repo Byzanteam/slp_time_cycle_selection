@@ -3,6 +3,7 @@ module SlpTimeCycleSelection
     validates :name, presence: true
 
     belongs_to :periodic_module, :class_name => 'SlpTimeCycleSelection::PeriodicModule'
+    has_many :options, :class_name => 'SlpTimeCycleSelection::PeriodicModuleOption', dependent: :destroy
 
     enum name: {
       'Monday' => 0,
