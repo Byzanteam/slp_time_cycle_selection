@@ -57,7 +57,10 @@ module SlpTimeCycleSelection
           :id,
           :name,
           :_destroy,
-          module_dates: [:id]
+          module_dates_attributes: [
+            :id,
+            options_attributes: [:id, :start_at, :end_at, :_destroy]
+          ]
         ]
       )
     end
