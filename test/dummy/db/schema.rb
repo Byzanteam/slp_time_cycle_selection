@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(version: 2019_08_12_021645) do
   create_table "slp_time_cycle_selection_periodic_rules", force: :cascade do |t|
     t.string "type"
     t.string "cycle_date", default: [], array: true
+    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_slp_time_cycle_selection_periodic_rules_on_project_id"
   end
 
   create_table "slp_time_cycle_selection_projects", force: :cascade do |t|

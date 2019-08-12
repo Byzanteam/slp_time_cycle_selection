@@ -2,7 +2,8 @@ module SlpTimeCycleSelection
   class Project < ApplicationRecord
     after_create :set_default_periodic_module
 
-    has_many :periodic_modules, :class_name => 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
+    has_many :periodic_modules, class_name: 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
+    has_one :rule, class_name: 'SlpTimeCycleSelection::PeriodicRule'
 
     accepts_nested_attributes_for :periodic_modules, allow_destroy: true
 
