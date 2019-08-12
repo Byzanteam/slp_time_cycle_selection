@@ -20,6 +20,8 @@ gem 'rest-client'
 
 gem 'puma'
 
+gem 'chinese_holidays', git: 'https://github.com/GreenNerd/ChineseHolidays.git', branch: 'master'
+
 # http://stackoverflow.com/a/25148960/3639260
 gem 'coffee-rails', '~> 4.0'
 gem 'sass-rails', '~> 5.0'
