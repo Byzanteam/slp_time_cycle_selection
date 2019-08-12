@@ -17,10 +17,6 @@ module SlpTimeCycleSelection
 
     private
 
-    def set_default_periodic_module
-      periodic_modules.create(name: '默认') if periodic_modules.empty?
-    end
-
     def set_default_periodic_module_dates
       SlpTimeCycleSelection::PeriodicModuleDate::DATES.each do |date|
         module_date = "SlpTimeCycleSelection::PeriodicModuleDate::#{date}".constantize.new
