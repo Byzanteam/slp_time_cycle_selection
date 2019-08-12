@@ -4,9 +4,10 @@ module SlpTimeCycleSelection
     after_create :set_default_rule
 
     has_many :periodic_modules, class_name: 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
-    has_one :rule, class_name: 'SlpTimeCycleSelection::PeriodicRule'
+    has_one :rule, class_name: 'SlpTimeCycleSelection::PeriodicRule', dependent: :destroy
 
     accepts_nested_attributes_for :periodic_modules, allow_destroy: true
+    accepts_nested_attributes_for :rule, allow_destroy: false, update_only: true
 
     enum delay_minute_unit: {
       'minute' => 0,
