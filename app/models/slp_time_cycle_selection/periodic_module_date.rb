@@ -2,7 +2,7 @@ module SlpTimeCycleSelection
   class PeriodicModuleDate < ApplicationRecord
     validates :name, presence: true
 
-    belongs_to :periodic_module, class_name: 'SlpTimeCycleSelection::PeriodicModule'
+    belongs_to :project, :class_name => 'SlpTimeCycleSelection::Project'
     has_many :options, class_name: 'SlpTimeCycleSelection::PeriodicModuleOption', dependent: :destroy
 
     after_create :set_default_options
