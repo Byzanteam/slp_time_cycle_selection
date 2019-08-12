@@ -1,6 +1,7 @@
 module SlpTimeCycleSelection
   class Project < ApplicationRecord
     after_create :set_default_periodic_module
+    after_create :set_default_rule
 
     has_many :periodic_modules, class_name: 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
     has_one :rule, class_name: 'SlpTimeCycleSelection::PeriodicRule'
@@ -17,6 +18,10 @@ module SlpTimeCycleSelection
 
     def set_default_periodic_module
       periodic_modules.create(name: '默认') if periodic_modules.empty?
+    end
+
+    def set_default_rule
+      create_rule(type: 'SlpTimeCycleSelection::PeriodicRule::Everyday')
     end
   end
 end

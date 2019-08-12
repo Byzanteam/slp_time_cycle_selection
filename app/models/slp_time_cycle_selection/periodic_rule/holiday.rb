@@ -1,6 +1,6 @@
 module SlpTimeCycleSelection
   class PeriodicRule
-    class Holiday < PeriodicModuleDate
+    class Holiday < PeriodicRule
     end
   end
 end

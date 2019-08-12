@@ -1,6 +1,6 @@
 module SlpTimeCycleSelection
   class PeriodicRule
-    class Custom < PeriodicModuleDate
+    class Custom < PeriodicRule
     end
   end
 end

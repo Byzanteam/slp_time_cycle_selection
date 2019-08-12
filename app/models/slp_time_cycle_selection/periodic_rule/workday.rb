@@ -1,6 +1,6 @@
 module SlpTimeCycleSelection
   class PeriodicRule
-    class Workday < PeriodicModuleDate
+    class Workday < PeriodicRule
     end
   end
 end

@@ -1,6 +1,6 @@
 module SlpTimeCycleSelection
   class PeriodicRule
-    class SaturdayToSunday < PeriodicModuleDate
+    class SaturdayToSunday < PeriodicRule
     end
   end
 end
