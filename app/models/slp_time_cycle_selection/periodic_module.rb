@@ -1,7 +1,7 @@
 module SlpTimeCycleSelection
   class PeriodicModule < ApplicationRecord
-    belongs_to :project, :class_name => 'SlpTimeCycleSelection::Project'
-    has_many :module_dates, :class_name => 'SlpTimeCycleSelection::PeriodicModuleDate', dependent: :destroy
+    belongs_to :project, class_name: 'SlpTimeCycleSelection::Project'
+    has_many :module_dates, class_name: 'SlpTimeCycleSelection::PeriodicModuleDate', dependent: :destroy
 
     after_create :set_default_periodic_module_dates
 

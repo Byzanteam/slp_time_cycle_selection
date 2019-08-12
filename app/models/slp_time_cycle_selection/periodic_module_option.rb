@@ -3,16 +3,15 @@ module SlpTimeCycleSelection
     belongs_to :module_date, class_name: 'SlpTimeCycleSelection::PeriodicModuleDate', foreign_key: 'periodic_module_date_id'
     delegate :periodic_module, to: :module_date
 
-    after_commit :set_option, only: [:create, :update]
+    def save(*args, &block)
+      if start_at.present?
+        option.clear
+        option << start_at.strftime('%T')
+      end
 
-    private
+      option << end_at.strftime('T') if end_at.present?
 
-    def set_option
-      return unless start_at
-
-      option.clear
-      option << start_at.strftime('%H:%S')
-      option << end_at.strftime('%H:%S') if start_at.present? && end_at.present?
+      super(*args, &block)
     end
   end
 end
