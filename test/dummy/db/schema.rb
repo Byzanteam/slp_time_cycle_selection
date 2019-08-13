@@ -18,29 +18,29 @@ ActiveRecord::Schema.define(version: 2019_08_12_021645) do
   create_table "slp_time_cycle_selection_periodic_module_dates", force: :cascade do |t|
     t.integer "name"
     t.string "type"
-    t.bigint "periodic_module_id"
+    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["periodic_module_id"], name: "periodic_module_dates_on_periodic_module_id"
+    t.index ["project_id"], name: "periodic_module_dates_on_project_id"
   end
 
   create_table "slp_time_cycle_selection_periodic_module_options", force: :cascade do |t|
-    t.bigint "periodic_module_date_id"
+    t.bigint "periodic_module_id"
     t.datetime "start_at"
     t.datetime "end_at"
     t.integer "upper_limit"
     t.string "option", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["periodic_module_date_id"], name: "periodic_module_options_on_periodic_module_date_id"
+    t.index ["periodic_module_id"], name: "periodic_module_options_on_periodic_module_id"
   end
 
   create_table "slp_time_cycle_selection_periodic_modules", force: :cascade do |t|
     t.string "name"
-    t.bigint "project_id"
+    t.bigint "periodic_module_date_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_slp_time_cycle_selection_periodic_modules_on_project_id"
+    t.index ["periodic_module_date_id"], name: "periodic_modules_on_periodic_module_date_id"
   end
 
   create_table "slp_time_cycle_selection_periodic_rules", force: :cascade do |t|
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2019_08_12_021645) do
     t.string "name"
     t.integer "delay_minutes", default: 0
     t.integer "delay_minute_unit", default: 0
+    t.integer "range_dates", default: 0
+    t.integer "range_date_unit", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

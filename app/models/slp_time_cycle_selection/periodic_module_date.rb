@@ -2,12 +2,12 @@ module SlpTimeCycleSelection
   class PeriodicModuleDate < ApplicationRecord
     validates :name, presence: true
 
-    belongs_to :periodic_module, class_name: 'SlpTimeCycleSelection::PeriodicModule'
-    has_many :options, class_name: 'SlpTimeCycleSelection::PeriodicModuleOption', dependent: :destroy
+    belongs_to :project, :class_name => 'SlpTimeCycleSelection::Project'
+    has_many :periodic_modules, :class_name => 'SlpTimeCycleSelection::PeriodicModule', dependent: :destroy
 
-    after_create :set_default_options
+    after_create :set_default_periodic_module
 
-    accepts_nested_attributes_for :options, allow_destroy: true
+    accepts_nested_attributes_for :periodic_modules, allow_destroy: true, update_only: false
 
     enum name: {
       'Monday' => 0,
@@ -31,8 +31,8 @@ module SlpTimeCycleSelection
 
     private
 
-    def set_default_options
-      options.create(option: %w[00:00 23:59])
+    def set_default_periodic_module
+      periodic_modules.create(name: '默认')
     end
   end
 end
