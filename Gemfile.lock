@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/GreenNerd/ChineseHolidays.git
+  revision: ff23c09468b99c6eefd6879adb0dfb02ebbf78fa
+  branch: master
+  specs:
+    chinese_holidays (0.1.1)
+      rest-client (~> 2.0)
+
+GIT
   remote: https://github.com/codebrew/backbone-rails.git
   revision: 231090bd690cd365a9486c17b00eec1e73ec37ec
   specs:
@@ -216,6 +224,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
+  chinese_holidays!
   coffee-rails (~> 4.0)
   font-awesome-rails
   jbuilder
