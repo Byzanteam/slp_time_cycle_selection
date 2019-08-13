@@ -1,7 +1,6 @@
 module SlpTimeCycleSelection
   class PeriodicRule < ApplicationRecord
     belongs_to :project, class_name: 'SlpTimeCycleSelection::Project', foreign_key: 'project_id'
-    has_one :profile_date, :class_name => 'SlpTimeCycleSelection::ProfileDate', foreign_key: 'rule_id'
 
     validate :validate_cycle_dates, if: proc { type == 'SlpTimeCycleSelection::PeriodicRule::Custom' }
 
