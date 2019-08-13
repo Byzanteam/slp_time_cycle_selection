@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2019_08_13_032108) do
 
   create_table "slp_time_cycle_selection_profile_dates", force: :cascade do |t|
     t.bigint "project_id"
-    t.string "workdays", default: [], array: true
-    t.string "holidays", default: [], array: true
+    t.date "workdays", default: [], array: true
+    t.date "holidays", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_slp_time_cycle_selection_profile_dates_on_project_id"
