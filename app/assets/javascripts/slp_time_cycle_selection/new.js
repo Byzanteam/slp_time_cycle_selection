@@ -5,7 +5,6 @@ $(function() {
   }else{
     getProjectById(location.pathname)
   }
-  
   function getProjects() {
     $.ajax({
       type: "get",
@@ -21,7 +20,6 @@ $(function() {
         }else {
           return
         }
-        
         html = '';
         data.forEach(function(obj, index) {
           html += `<tr data-href='${defaultUrl}/${obj.id}'>
@@ -40,9 +38,6 @@ $(function() {
           })
           
           $(item).find('.delete-project-button').click(function() {
-            
-            
-            
             var deleteUrl = $(this).parents('tr').data('href');
             $.ajax({
               type: "delete",
@@ -115,5 +110,9 @@ $(function() {
       var modalId = $(this).parents('.modal').attr('id')
       closeModal(`#${modalId}`)
     })
+  }
+  
+  function getProjectById(url) {
+    
   }
 })
