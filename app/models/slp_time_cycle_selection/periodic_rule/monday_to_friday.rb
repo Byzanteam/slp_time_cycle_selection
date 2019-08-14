@@ -27,7 +27,7 @@ module SlpTimeCycleSelection
           if filter_workdays.include?(periodic_date)
             nil
           else
-            if !periodic_date.saturday? || !periodic_date.sunday?
+            if periodic_date.saturday? || periodic_date.sunday?
               monday_to_friday << periodic_date
             end
           end
