@@ -17,6 +17,10 @@ module SlpTimeCycleSelection
       'day' => 2
     }
 
+    enum range_date_unit: {
+      'range_day' => 0
+    }
+
     private
 
     def set_default_periodic_module_dates
