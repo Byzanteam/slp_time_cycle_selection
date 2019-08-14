@@ -53,15 +53,8 @@ module SlpTimeCycleSelection
         :name,
         :delay_minutes,
         :delay_minute_unit,
-        module_dates_attributes: [
-          :id,
-          :name,
-          periodic_modules_attributes: [
-            :id,
-            :_destroy,
-            options_attributes: [:id, :start_at, :end_at, :_destroy]
-          ]
-        ],
+        :range_dates,
+        :range_dates_unit,
         rule_attributes: [:id, :type, cycle_date: []]
       )
     end
