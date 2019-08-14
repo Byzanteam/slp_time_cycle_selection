@@ -23,6 +23,41 @@ module SlpTimeCycleSelection
       project.profile_date
     end
 
+    def default_periodic_dates
+      periodic_dates = []
+      project.range_dates.times.each do |i|
+        periodic_dates << (start_date + i.days)
+      end
+      periodic_dates
+    end
+
+    def filter_periodic_dates
+      @periodic_dates & filter_holidays
+    end
+
+    def push_dates(days)
+      days.times.each do |_|
+        add_day = @periodic_dates.last + 1.days
+        @periodic_dates << add_day
+      end
+    end
+
+    def is_workday?(date)
+      ChineseHolidays.is_workday?(date)
+    end
+
+    def filter_holidays
+      profile_date.holidays.select do |date|
+        date >= start_date
+      end
+    end
+
+    def filter_workdays
+      profile_date.workdays.select do |date|
+        date >= start_date
+      end
+    end
+
     private
 
     def set_cycle_type
