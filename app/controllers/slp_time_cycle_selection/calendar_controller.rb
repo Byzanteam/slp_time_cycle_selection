@@ -7,7 +7,24 @@ module SlpTimeCycleSelection
     def periodic_dates
       periodic_dates = @project.rule.calculate_periodic_dates
 
-      render json: { periodic_dates: periodic_dates }, layout: false
+      filter_dates =
+        if params[:start_date] && params[:end_date]
+          periodic_dates.select do |date|
+            date >= Date.parse(params[:start_date]) && date < Date.parse(params[:end_date])
+          end
+        elsif params[:start_date]
+          periodic_dates.select do |date|
+            date >= Date.parse(params[:start_date])
+          end
+        elsif params[:end_date]
+          periodic_dates.select do |date|
+            date < Date.parse(params[:end_date])
+          end
+        else
+          periodic_dates
+        end
+
+      render json: { periodic_dates: filter_dates }, layout: false
     end
 
     private
