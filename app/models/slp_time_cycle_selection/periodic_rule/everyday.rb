@@ -11,18 +11,14 @@ module SlpTimeCycleSelection
 
       def filter_holidays
         profile_date.holidays.select do |date|
-          date >= Date.parse(start_time.to_s)
+          date >= start_date
         end
-      end
-
-      def profile_date
-        project.profile_date
       end
 
       def default_periodic_dates
         periodic_dates = []
         project.range_dates.times.each do |i|
-          periodic_dates << (Date.parse(start_time.to_s) + i.days)
+          periodic_dates << (start_date + i.days)
         end
         periodic_dates
       end

@@ -14,8 +14,13 @@ module SlpTimeCycleSelection
       end
     end
 
-    def start_time
-      Time.now + project.delay_minutes.minutes
+    def start_date
+      start_time = Time.now + project.delay_minutes.minutes
+      Date.parse(start_time.to_s)
+    end
+
+    def profile_date
+      project.profile_date
     end
 
     private
