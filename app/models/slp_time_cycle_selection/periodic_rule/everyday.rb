@@ -9,31 +9,6 @@ module SlpTimeCycleSelection
 
       private
 
-      def filter_holidays
-        profile_date.holidays.select do |date|
-          date >= start_date
-        end
-      end
-
-      def default_periodic_dates
-        periodic_dates = []
-        project.range_dates.times.each do |i|
-          periodic_dates << (start_date + i.days)
-        end
-        periodic_dates
-      end
-
-      def filter_periodic_dates
-        @periodic_dates & filter_holidays
-      end
-
-      def push_dates(days)
-        days.times.each do |_|
-          add_day = @periodic_dates.last + 1.days
-          @periodic_dates << add_day
-        end
-      end
-
       def generator_dates_result
         delete_dates = filter_periodic_dates
 
