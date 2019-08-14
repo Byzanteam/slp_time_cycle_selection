@@ -10,7 +10,7 @@ module SlpTimeCycleSelection
       private
 
       def generator_dates_result
-        delete_dates = filter_periodic_dates | filter_weekend
+        delete_dates = filter_periodic_dates | delete_weekend
 
         unless delete_dates.empty?
           push_dates(delete_dates.size)
@@ -21,7 +21,7 @@ module SlpTimeCycleSelection
         @periodic_dates
       end
 
-      def filter_weekend
+      def delete_weekend
         holidays = []
         @periodic_dates.each do |periodic_date|
           if filter_workdays.include?(periodic_date)
