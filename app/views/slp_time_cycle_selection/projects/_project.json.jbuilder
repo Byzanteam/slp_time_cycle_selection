@@ -1,4 +1,4 @@
-json.(project, :id, :name, :delay_minutes, :delay_minute_unit)
+json.(project, :id, :name, :delay_minutes, :delay_minute_unit, :range_dates, :range_date_unit)
 
 unless params[:index] == 'index'
   json.module_dates do
