@@ -1,4 +1,4 @@
-.modal id="exampleModal" tabindex="-1" role="dialog"
+.modal.new-project-modal id="newProjectModal" tabindex="-1" role="dialog"
   .modal-dialog role="document"
     .modal-content
       .modal-header
@@ -8,7 +8,8 @@
       .modal-body
         .form-group
           label for="formGroupExampleInput" 项目名称
-          input type="text" class="form-control" id="formGroupExampleInput" placeholder="请输入项目名称"
+          input type="text" class="form-control" id="formGroupExampleInput" placeholder="请输入项目名称" required="required"
+          .invalid-feedback  请填写项目名称
       .modal-footer
         button type="button" class="btn btn-light modal-cancel" data-dismiss="modal" 取消
         button type="button" class="btn btn-info modal-ensure" 保存
