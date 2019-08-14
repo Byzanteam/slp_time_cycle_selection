@@ -14,6 +14,10 @@ module SlpTimeCycleSelection
       end
     end
 
+    def start_time
+      Time.now + project.delay_minutes.minutes
+    end
+
     private
 
     def set_cycle_type

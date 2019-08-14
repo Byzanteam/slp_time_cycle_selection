@@ -18,7 +18,7 @@ module SlpTimeCycleSelection
     }
 
     enum range_date_unit: {
-      'range_day' => 0
+      'ranger_day' => 0
     }
 
     private
