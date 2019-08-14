@@ -15,8 +15,13 @@ $(function() {
         
       },
       success: function(data) {
-        $('.new-project').hide()
-        $('.project-table').show()
+        if(data.length > 0) {
+          $('.new-project').hide()
+          $('.project-table').show()
+        }else {
+          return
+        }
+        
         html = '';
         data.forEach(function(obj, index) {
           html += `<tr data-href='${defaultUrl}/${obj.id}'>
@@ -25,12 +30,29 @@ $(function() {
                     <td></td>
                     <td></td>
                     <td></td>
+                    <td><button type="button" class="btn btn-outline-danger delete-project-button">删除</button></td>
                   </tr>`
         })
         $('#project-tbody').html(html);
         $('#project-tbody tr').each(function(index, item) {
           $(item).click(function() {
             location.href = item.dataset['href']
+          })
+          
+          $(item).find('.delete-project-button').click(function() {
+            
+            
+            
+            var deleteUrl = $(this).parents('tr').data('href');
+            $.ajax({
+              type: "delete",
+              url: `${deleteUrl}.json`,
+              contentType: 'json',
+              success: function() {
+                location.reload()
+              }
+            })
+            return false
           })
         })
         
@@ -49,47 +71,49 @@ $(function() {
       })
     }
     
-    let openModal = function() {
-      $('#exampleModal').fadeIn(100);
+    let openModal = function(target) {
+      $(target).fadeIn(100);
     }
     
-    let closeModal = function() {
-      $('#exampleModal').fadeOut(100);    
+    let closeModal = function(target) {
+      $(target).fadeOut(100);    
     }
     
-    $('.new-project').click(openModal);
+    $('.new-project').click(function() {
+      openModal($(this).data('target'))
+    });
     
-    $('.add-project-button').click(openModal);
+    $('.add-project-button').click(function() {
+      openModal($(this).data('target'))
+    });
     
     $('.modal-ensure').click(function() {
+      var modalId = $(this).parents('.modal').attr('id')
+      
       let data = {
         name: $('#formGroupExampleInput').val().trim()
       }
+      if(!data.name){
+        $('#formGroupExampleInput').next().show()
+        return
+      }else {
+        $('#formGroupExampleInput').next().hide()
+      }
       createProject(data, function(data) {
         location.href = `${defaultUrl}/${data.id}`
-        closeModal()
+        closeModal(`#${modalId}`)
       });
-      closeModal()
+      closeModal(`#${modalId}`)
     });
     
-    $('.modal-cancel').click(closeModal)
-    
-    $('.close').click(closeModal)
-  }
-  
-  function getProjectById(url) {
-    $.ajax({
-      type: "get",
-      url: `${url}.json`,
-      contentType: 'json',
-      success: function(data) {
-        
-      }
+    $('.modal-cancel').click(function() {
+      var modalId = $(this).parents('.modal').attr('id')
+      closeModal(`#${modalId}`)
     })
     
-    $('#close-project').click(function() {
-      location.href = defaultUrl
+    $('.close').click(function() {
+      var modalId = $(this).parents('.modal').attr('id')
+      closeModal(`#${modalId}`)
     })
-    
   }
 })
