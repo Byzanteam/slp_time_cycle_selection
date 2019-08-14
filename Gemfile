@@ -26,6 +26,7 @@ gem 'chinese_holidays', git: 'https://github.com/GreenNerd/ChineseHolidays.git',
 gem 'coffee-rails', '~> 4.0'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails', '~> 3.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jbuilder'
 
 gem 'font-awesome-rails'

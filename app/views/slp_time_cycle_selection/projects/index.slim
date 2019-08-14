@@ -1,0 +1,24 @@
+.project-page
+  .head
+    .head-left 时间生成器
+  .middle
+    .middle-left
+      span 所有项目
+    button type="button" class="btn btn-light add-project-button" data-toggle="modal" data-target="#newProjectModal"
+      i.icon-tianjia
+      span 添加新项目
+  .content
+    table class="table project-table"
+      thead
+        tr
+          th scope="col" 项目名称
+          th scope="col" 提前预约
+          th scope="col" 可预约
+          th scope="col" 预约周期
+          th scope="col" 接口链接
+          th scope="col" 操作
+      tbody#project-tbody
+    .new-project data-target="#newProjectModal"
+      i.icon-rili
+      span.no-project 没有项目
+== render 'new_modal'
